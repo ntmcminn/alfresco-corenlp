@@ -30,15 +30,11 @@ import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLPClient;
 import edu.stanford.nlp.util.CoreMap;
 
-public class CoreNLPService {
+public class CoreNLPService extends AbstractNLPService {
 
 	private Log logger = LogFactory.getLog(CoreNLPService.class);
 	private CoreNLPClientFactory clientFactory;
-	private ServiceRegistry registry;
 	private static final String use = "corenlp";
-	private int maxPages = 100;
-	private int maxSize = -1;
-	
 	private static final String nePerson = "PERSON";
 	
 	public void annotateDocument(NodeRef doc) {
@@ -140,17 +136,8 @@ public class CoreNLPService {
 		text = tempReader.getContentString();
 		return text;
 	}
-	public void setServiceRegistry(ServiceRegistry registry) {
-		this.registry = registry;
-	}
 	
 	public void setClientFactory(CoreNLPClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
-	}
-	public void setMaxPages(int maxPages) {
-		this.maxPages = maxPages;
-	}
-	public void setMaxSize(int maxSize) {
-		this.maxSize = maxSize;
 	}
 }

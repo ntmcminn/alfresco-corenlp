@@ -17,7 +17,7 @@ public class AnnotationAction extends ActionExecuterAbstractBase {
 	
 	private Log logger = LogFactory.getLog(AnnotationAction.class);
 	private ServiceRegistry registry;
-	private CoreNLPService nlps;
+	private NLPService nlps;
 	
 	@Override
 	protected void executeImpl(Action action, NodeRef actionedUponNodeRef) {
@@ -38,7 +38,7 @@ public class AnnotationAction extends ActionExecuterAbstractBase {
 		//TODO - Allow overrides of pipeline specified in service component config via action params
 	}
 	
-	public void setCoreNLPService(CoreNLPService nlps) {
+	public void setNLPService(NLPService nlps) {
 		this.nlps = nlps;
 	}
 	public void setServiceRegistry(ServiceRegistry registry) {
