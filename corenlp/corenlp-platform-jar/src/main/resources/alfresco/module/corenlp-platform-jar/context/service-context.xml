@@ -40,6 +40,7 @@
 	<bean id="nlp-annotation" class="org.alfresco.extension.corenlp.AnnotationAction"
 	parent="action-executer">
 		<property name="serviceRegistry" ref="ServiceRegistry"/>
-		<property name="coreNLPService" ref="org.alfresco.extension.corenlp.CoreNLPService"/>
+		<property name="NLPService" ref="org.alfresco.extension.corenlp.CoreNLPService"/>
+		<!-- <property name="NLPService" ref="org.alfresco.extension.corenlp.GoogleNLPService"/> -->
 	</bean>
 </beans>
