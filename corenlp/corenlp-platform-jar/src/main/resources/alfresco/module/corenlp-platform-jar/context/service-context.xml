@@ -28,6 +28,13 @@
 		<property name="maxSize" value="-1"/>
 	</bean>
 	
+	<!-- Google implementation of the NLP service lives here -->
+	<bean id="org.alfresco.extension.corenlp.GoogleNLPService" class="org.alfresco.extension.corenlp.GoogleNLPService">
+		<property name="serviceRegistry" ref="ServiceRegistry"/>
+		<property name="maxPages" value="5"/>
+		<property name="maxSize" value="-1"/>
+	</bean>
+	
 	<!-- CoreNLP client factory -->
 	<bean id="org.alfresco.extension.corenlp.CoreNLPClientFactory" class="org.alfresco.extension.corenlp.CoreNLPClientFactory">
 		<property name="host" value="http://localhost"/>
@@ -40,7 +47,7 @@
 	<bean id="nlp-annotation" class="org.alfresco.extension.corenlp.AnnotationAction"
 	parent="action-executer">
 		<property name="serviceRegistry" ref="ServiceRegistry"/>
-		<property name="NLPService" ref="org.alfresco.extension.corenlp.CoreNLPService"/>
-		<!-- <property name="NLPService" ref="org.alfresco.extension.corenlp.GoogleNLPService"/> -->
+		<!-- <property name="NLPService" ref="org.alfresco.extension.corenlp.CoreNLPService"/> -->
+		<property name="NLPService" ref="org.alfresco.extension.corenlp.GoogleNLPService"/>
 	</bean>
 </beans>
