@@ -15,6 +15,7 @@ public class CoreNLPClientFactory {
 	private String pipeline = "tokenize, ner";
 	private int threads = 2;
 	
+	
 	public StanfordCoreNLPClient getClient() {
 		
 		Properties nlpProps = new Properties();

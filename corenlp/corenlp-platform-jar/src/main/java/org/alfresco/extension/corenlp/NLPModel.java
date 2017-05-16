@@ -2,7 +2,7 @@ package org.alfresco.extension.corenlp;
 
 import org.alfresco.service.namespace.QName;
 
-public interface CoreNLPModel {
+public interface NLPModel {
 
 	static final String CORENLP_MODEL_1_0_URI = "http://www.alfresco.com/model/corenlp/1.0";
 	

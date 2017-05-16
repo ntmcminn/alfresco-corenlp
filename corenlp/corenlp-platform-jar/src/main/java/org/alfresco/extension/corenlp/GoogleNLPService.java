@@ -1,38 +1,41 @@
 package org.alfresco.extension.corenlp;
 
-import org.alfresco.service.ServiceRegistry;
+import java.io.IOException;
+
 import org.alfresco.service.cmr.repository.NodeRef;
 
-public class GoogleNLPService implements NLPService {
+import com.google.cloud.language.spi.v1.LanguageServiceClient;
+import com.google.cloud.language.v1.AnalyzeEntitiesResponse;
+import com.google.cloud.language.v1.Document;
+import com.google.cloud.language.v1.Document.Type;
+import com.google.cloud.language.v1.EncodingType;
+import com.google.cloud.language.v1.Sentiment;
 
-	@Override
+
+public class GoogleNLPService extends AbstractNLPService {
+
 	public void annotateDocument(NodeRef doc) {
-		// TODO Auto-generated method stub
+
+		try {
+			// Instantiates a client
+		    LanguageServiceClient language = LanguageServiceClient.create();
+		    String text = getText(doc);
+		    Document procdoc = Document.newBuilder()
+		            .setContent(text).setType(Type.PLAIN_TEXT).build();
+		    
+		    EncodingType encodingType = EncodingType.UTF8;
+		    
+		    AnalyzeEntitiesResponse response = language.analyzeEntities(procdoc, encodingType);
+		    
+		    Sentiment sentiment = language.analyzeSentiment(procdoc).getDocumentSentiment();
+		}
+		catch(IOException ioex) {
+			
+		}
 
 	}
 
-	@Override
-	public void setServiceRegistry(ServiceRegistry registry) {
-		// TODO Auto-generated method stub
-
+	private void decorateNode(NodeRef doc, AnalyzeEntitiesResponse entities, Sentiment sentiment) {
+		
 	}
-
-	@Override
-	public void setClientFactory(CoreNLPClientFactory clientFactory) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setMaxPages(int maxPages) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setMaxSize(int maxSize) {
-		// TODO Auto-generated method stub
-
-	}
-
 }
