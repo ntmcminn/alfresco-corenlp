@@ -81,6 +81,12 @@
         <dependency>
             <groupId>${alfresco.groupId}</groupId>
             <artifactId>alfresco-repository</artifactId>
+            <exclusions>
+			    <exclusion>
+			      <artifactId>guava</artifactId>
+			      <groupId>com.google.guava</groupId>
+			    </exclusion>
+		  	</exclusions>
         </dependency>
 
         <!-- Bring in Spring Context so we can use ApplicationContext, ApplicationContextAware etc -->
@@ -120,6 +126,11 @@
     		<groupId>com.google.protobuf</groupId>
     		<artifactId>protobuf-java</artifactId>
     		<version>3.2.0</version>
+    		<scope>runtime</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
 		</dependency>
     </dependencies>
 
